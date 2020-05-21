@@ -2,7 +2,7 @@
 
 #include <eosio/eosio.hpp>
 
-struct [[eosio::table]] coupon {
+struct coupon {
   uint16_t value;
   bool active = false;
 };
