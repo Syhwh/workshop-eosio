@@ -3,30 +3,27 @@
 #include <eosio/eosio.hpp>
 #include "./tables.h"
 
-using eosio::name;
 using eosio::contract;
+using eosio::name;
 
-class [[eosio::contract]] pizzabonus : public contract {
-  public:
-    using contract::contract;
-    
-    pizzabonus(name self_contract, name user, eosio::datastream<const char*> ds);
-    // ~pizzabonus();
+class [[eosio::contract]] pizzabonus : public contract
+{
+public:
+  using contract::contract;
 
-    [[eosio::action]]
-    void buypizza(name user);
+  pizzabonus(name self_contract, name user, eosio::datastream<const char *> ds);
+  // ~pizzabonus();
 
-    [[eosio::action]]
-    uint16_t getcoupons(name user);
+  [[eosio::action]] void buypizza(name user);
 
-    [[eosio::action]]
-    void redeemcoupon(name user);
+  [[eosio::action]] uint16_t getcoupons(name user);
 
-    [[eosio::action]]
-    void chngthrhld(name user, uint16_t newvalue);
+  [[eosio::action]] void redeemcoupon(name user);
 
-  private:
-    uint16_t coupon_threshold;
+  [[eosio::action]] void chngthrhld(name user, uint16_t newvalue);
 
-    usertable_t ut;
+private:
+  uint16_t coupon_threshold;
+
+  usertable_t ut;
 };
